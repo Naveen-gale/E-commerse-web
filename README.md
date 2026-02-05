@@ -1,4 +1,4 @@
-# Antigravity Bags E-Commerce Project
+#StyleSync E-Commerce Project
 
 This is a full-stack E-Commerce application built with the MERN stack (MongoDB, Express, React, Node.js). It consists of three main components: a Backend API, a Frontend User Interface, and an Admin Dashboard.
 
