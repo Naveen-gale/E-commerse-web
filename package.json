@@ -1,0 +1,12 @@
+{
+    "name": "e-commerce-root",
+    "version": "1.0.0",
+    "description": "Root script to run all services",
+    "scripts": {
+        "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install && cd ../admin && npm install",
+        "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\" \"cd admin && npm run dev\" --names \"BACKEND,FRONTEND,ADMIN\" --prefix-colors \"blue,green,magenta\""
+    },
+    "dependencies": {
+        "concurrently": "^8.2.2"
+    }
+}
