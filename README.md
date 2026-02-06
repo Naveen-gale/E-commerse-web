@@ -1,16 +1,109 @@
-#StyleSync E-Commerce Project
+🛍️ StyleSync — MERN Stack E-Commerce Platform
+StyleSync is a modern full-stack fashion E-Commerce web application built using the MERN Stack.
+It provides a seamless shopping experience for customers and a powerful dashboard for admins to manage products, orders, and users.
+Built with ❤️ for performance, scalability, and clean UI.
+🚀 Tech Stack
+� � � � �
+Frontend
+React.js
+Tailwind CSS
+Axios
+Redux / Context API
+Backend
+Node.js
+Express.js
+REST APIs
+JWT Authentication
+Database
+MongoDB + Mongoose
+✨ Features
+👤 User Side
+User Registration & Login
+JWT Authentication
+Browse Products by Category
+Search & Filters
+Add to Cart
+Wishlist
+Secure Checkout
+Order History
+Responsive Mobile UI
+🛠️ Admin Dashboard
+Add / Edit / Delete Products
+Manage Categories
+Order Management
+User Management
+Sales Analytics
+Stock Control
+📂 Folder Structure
+Copy code
 
-This is a full-stack E-Commerce application built with the MERN stack (MongoDB, Express, React, Node.js). It consists of three main components: a Backend API, a Frontend User Interface, and an Admin Dashboard.
+StyleSync/
+│
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   └── server.js
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── redux/
+│   │   └── App.jsx
+│
+├── admin/
+│   ├── dashboard/
+│   ├── products/
+│   └── analytics/
+│
+└── README.md
+⚙️ Installation & Setup
+1️⃣ Clone Repo
+Copy code
+Bash
+git clone https://github.com/your-username/stylesync.git
+cd stylesync
+2️⃣ Backend Setup
+Copy code
+Bash
+cd backend
+npm install
+npm run dev
+3️⃣ Frontend Setup
+Copy code
+Bash
+cd frontend
+npm install
+npm start
+4️⃣ Environment Variables (.env)
+Copy code
 
-![MERN Stack](https://img.shields.io/badge/MERN-Full%20Stack-blue)
-![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
-![Node.js](https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=flat&logo=mongodb&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
-
-## 📂 Folder Structure
-
-The project is organized into the following main directories:
+PORT=5000
+MONGO_URI=your_mongodb_connection
+JWT_SECRET=your_secret_key
+🔐 Authentication Flow
+Register → Login → JWT Token Generated
+Token stored → Used for protected routes
+Role-based access (User/Admin)
+🌍 Deployment
+You can deploy easily on:
+Vercel (Frontend)
+Railway / Render (Backend)
+MongoDB Atlas (Database)
+🎯 Future Improvements
+Payment Gateway (Stripe/Razorpay)
+AI Product Recommendations
+Reviews & Ratings
+Dark Mode
+Multi-Vendor Support
+PWA Support
+🤝 Contributing
+Pull requests are welcome. For major changes, open an issue first to discuss what you would like to change.
+📜 License
+MIT LicenseThe project is organized into the following main directories:
 E-commerse-web/
 ├── 📂 root/         # Main orchestration scripts & configs
 ├── 📂 backend/      # Node.js & Express API (Auth, Data, Payments)
