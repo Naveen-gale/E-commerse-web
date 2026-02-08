@@ -82,7 +82,7 @@ const RegisterPage = () => {
                 onClick={() => navigate('/')}
             >
                 <img className='w-[40px] h-[40px] object-contain' src={logo} alt="logo" />
-                <h3 className='text-xl font-bold tracking-tight'>oencart</h3>
+                <h3 className='text-xl font-bold tracking-tight'>StyleSync</h3>
             </div>
 
             {/* Main Content Container */}

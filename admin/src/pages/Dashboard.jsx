@@ -8,7 +8,7 @@ const Dashboard = () => {
     // --- YOUR LOGIC (UNCHANGED) ---
     const fetchProducts = async () => {
         try {
-            const res = await axios.get('http://localhost:3000/api/products/all')
+            const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/products/all`)
             setProducts(res.data)
             setLoading(false)
         } catch (error) {
@@ -20,7 +20,7 @@ const Dashboard = () => {
     const handleDelete = async (id) => {
         if (confirm("Are you sure you want to delete this product?")) {
             try {
-                await axios.delete(`http://localhost:3000/api/products/delete/${id}`)
+                await axios.delete(`${import.meta.env.VITE_SERVER_URL}/api/products/delete/${id}`)
                 fetchProducts() // Refresh list
             } catch (error) {
                 alert("Failed to delete")
@@ -45,14 +45,14 @@ const Dashboard = () => {
 
     return (
         <div className='w-full min-h-screen bg-[#050505] text-white pt-24 pb-20 px-4 md:px-12'>
-            
+
             {/* Background Texture (Consistent with App) */}
             <div className='fixed inset-0 pointer-events-none z-0'>
                 <div className='absolute top-0 right-0 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[120px]' />
             </div>
 
             <div className='relative z-10 max-w-[1400px] mx-auto'>
-                
+
                 {/* --- Header Section --- */}
                 <div className='flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 border-b border-white/10 pb-8'>
                     <div>
@@ -66,30 +66,30 @@ const Dashboard = () => {
                             Manage your collection. Currently displaying <span className='text-white font-semibold'>{products.length}</span> items.
                         </p>
                     </div>
-                    
-                
 
-                    
+
+
+
                 </div>
 
                 {/* --- Grid Layout --- */}
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
                     {products.map((product) => (
-                        <div 
-                            key={product._id} 
+                        <div
+                            key={product._id}
                             className='group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-300 flex flex-col'
                         >
                             {/* Image Container */}
                             <div className='relative aspect-[4/5] overflow-hidden bg-gray-900'>
-                                <img 
-                                    src={product.image} 
-                                    alt={product.name} 
-                                    className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100' 
+                                <img
+                                    src={product.image}
+                                    alt={product.name}
+                                    className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100'
                                 />
-                                
+
                                 {/* Overlay Gradient */}
                                 <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60' />
-                                
+
                                 {/* Price Tag */}
                                 <div className='absolute top-3 left-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded text-xs font-bold text-white border border-white/10'>
                                     ${product.price}
@@ -110,7 +110,7 @@ const Dashboard = () => {
                                     <span className='text-xs text-gray-500 uppercase tracking-wider font-medium'>
                                         ID: {product._id.toString().slice(-4)}
                                     </span>
-                                    
+
                                     <button
                                         onClick={() => handleDelete(product._id)}
                                         className='flex items-center gap-2 px-3 py-2 bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white rounded-lg transition-all duration-300 group/delete'

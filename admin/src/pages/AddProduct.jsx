@@ -36,7 +36,7 @@ const AddProduct = () => {
         data.append('image', formData.image)
 
         try {
-            await axios.post('http://localhost:3000/api/products/add', data, {
+            await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/products/add`, data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 }
