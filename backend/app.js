@@ -16,10 +16,26 @@ app.get("/", (req, res) => {
 })
 app.use(express.json())
 app.use(cookieParser())
+const allowedOrigins = [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "https://e-commerse-web-vtdb.vercel.app",
+    "https://e-commerse-web-backend.onrender.com"
+];
+
 app.use(cors({
-    origin: true, // Allow all origins dynamically (reflects request origin)
-    credentials: true
-}))
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            console.log("Blocked by CORS:", origin);
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 import productRoutes from "./routes/product.routes.js";
 import cartRoutes from "./routes/cart.routes.js";
