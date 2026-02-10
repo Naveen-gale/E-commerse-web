@@ -96,12 +96,12 @@ const LoginPage = () => {
           <img className='w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300 drop-shadow-lg' src={logo} alt="logo" />
           <h3 className='text-2xl font-bold tracking-tighter text-white group-hover:text-blue-400 transition-colors'>
             StyleSync
-          </h3>
-        </div>
-      </div>
+          </h3 >
+        </div >
+      </div >
 
       {/* Main Content Container */}
-      <div className='z-10 flex-1 flex items-center justify-center px-4 sm:px-6'>
+      < div className='z-10 flex-1 flex items-center justify-center px-4 sm:px-6' >
         <div className='max-w-[420px] w-full flex flex-col items-center gap-8'>
 
           {/* Typography Section */}
@@ -181,8 +181,8 @@ const LoginPage = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   )
 }
 
