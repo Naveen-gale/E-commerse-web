@@ -21,6 +21,7 @@ const allowedOrigins = [
     "http://localhost:5174",
     "https://e-commerse-web-vtdb.vercel.app",
     "https://e-commerse-web-backend.onrender.com",
+    "https://e-commerse-web-frontend.vercel.app",
     process.env.FRONTEND_URL,
     process.env.ADMIN_URL
 ];

@@ -59,7 +59,12 @@ export const getProducts = async (req, res) => {
         res.status(200).json(products);
     } catch (error) {
         console.error("Get products error:", error);
-        res.status(500).json({ message: "Failed to fetch products", error: error.message });
+        console.error("Error Stack:", error.stack);
+        res.status(500).json({
+            message: "Failed to fetch products",
+            error: error.message,
+            stack: process.env.NODE_ENV === 'production' ? null : error.stack
+        });
     }
 };
 
