@@ -22,6 +22,7 @@ const allowedOrigins = [
     "https://e-commerse-web-vtdb.vercel.app",
     "https://e-commerse-web-backend.onrender.com",
     "https://e-commerse-web-frontend.vercel.app",
+    "https://e-commerse-web-admin.vercel.app",
     process.env.FRONTEND_URL,
     process.env.ADMIN_URL
 ];

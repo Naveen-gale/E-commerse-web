@@ -53,7 +53,7 @@ const LoginPage = () => {
       const result = await axios.post(`${serverurl}/api/auth/google-login`, {
         name: user.displayName,
         email: user.email,
-        intent: 'login'
+        intent: 'login' // Explicitly set intent
       }, {
         withCredentials: true
       })

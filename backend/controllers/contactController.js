@@ -15,21 +15,21 @@ const transporter = nodemailer.createTransport({
 
 export const submitContact = async (req, res) => {
     try {
-        const { name, email, message } = req.body;
+        const { name, email, phone, subject, message } = req.body;
 
         if (!name || !email || !message) {
             return res.status(400).json({ message: "All fields are required" });
         }
 
         // Save to DB
-        const newContact = await Contact.create({ name, email, message });
+        const newContact = await Contact.create({ name, email, phone, subject, message });
 
         // Send Email to Admin (Receiver)
         const mailOptionsAdmin = {
             from: process.env.EMAIL_USER,
             to: process.env.RECEIVER_EMAIL, // Updated var name
-            subject: `New Contact Form Submission from ${name}`,
-            text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+            subject: `New Contact: ${subject || 'No Subject'} - ${name}`,
+            text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nSubject: ${subject || 'N/A'}\n\nMessage:\n${message}`,
         };
 
         // Send Auto-reply to User
