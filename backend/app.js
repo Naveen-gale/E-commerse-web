@@ -20,7 +20,9 @@ const allowedOrigins = [
     "http://localhost:5173",
     "http://localhost:5174",
     "https://e-commerse-web-vtdb.vercel.app",
-    "https://e-commerse-web-backend.onrender.com"
+    "https://e-commerse-web-backend.onrender.com",
+    process.env.FRONTEND_URL,
+    process.env.ADMIN_URL
 ];
 
 app.use(cors({
