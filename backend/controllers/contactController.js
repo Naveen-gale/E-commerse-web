@@ -40,11 +40,18 @@ export const submitContact = async (req, res) => {
             text: `Hi ${name},\n\nWe have received your message and will get back to you shortly.\n\nBest Regards,\nAntigravity Bags Team`,
         };
 
-        // Send both emails
-        await Promise.all([
+        // Send both emails (using allSettled so one failure doesn't block the response)
+        const results = await Promise.allSettled([
             transporter.sendMail(mailOptionsAdmin),
             transporter.sendMail(mailOptionsUser)
         ]);
+
+        // Log results
+        results.forEach((result, index) => {
+            if (result.status === 'rejected') {
+                console.error(`Email ${index === 0 ? 'Admin' : 'User'} failed:`, result.reason);
+            }
+        });
 
         res.status(201).json({ message: "Message sent successfully" });
     } catch (error) {

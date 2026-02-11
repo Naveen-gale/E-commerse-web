@@ -4,20 +4,21 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // --- Imports ---
-import RegisterPage from './pages/RegisterPage'
-import LoginPage from './pages/LoginPage'
-import HomePage from './pages/HomePage'
+const RegisterPage = React.lazy(() => import('./pages/RegisterPage'))
+const LoginPage = React.lazy(() => import('./pages/LoginPage'))
+const HomePage = React.lazy(() => import('./pages/HomePage'))
 import NaveBar from './components/NaveBar'
-import Men from './components/Men'
-import Women from './components/Women'
-import Kids from './components/Kids'
-import Winter from './components/Winter'
-import { useUserContext } from './context/usercontext'
-import CollectionPage from './pages/Collection'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Cart from './components/Cart'
-import ThankYou from './pages/ThankYou'
+const Men = React.lazy(() => import('./components/Men'))
+const Women = React.lazy(() => import('./components/Women'))
+const Kids = React.lazy(() => import('./components/Kids'))
+const Winter = React.lazy(() => import('./components/Winter'))
+const CollectionPage = React.lazy(() => import('./pages/Collection')) // Huge win
+const About = React.lazy(() => import('./pages/About'))
+const Contact = React.lazy(() => import('./pages/Contact'))
+const Cart = React.lazy(() => import('./components/Cart'))
+const ThankYou = React.lazy(() => import('./pages/ThankYou'))
+import { useUserContext } from './context/usercontext' // Context must be eager
+
 
 const App = () => {
   const { userdta } = useUserContext()
@@ -54,23 +55,29 @@ const App = () => {
 
       {/* --- Main Content --- */}
       <div className={`relative z-10 ${isAuthPage ? 'p-0' : 'pt-[80px] pb-10'}`}>
-        <Routes>
-          {/* Auth Routes */}
-          <Route path="/signup" element={userdta ? <Navigate to="/" /> : <RegisterPage />} />
-          <Route path="/login" element={userdta ? <Navigate to="/" /> : <LoginPage />} />
+        <React.Suspense fallback={
+          <div className="min-h-screen flex items-center justify-center text-white">
+            <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        }>
+          <Routes>
+            {/* Auth Routes */}
+            <Route path="/signup" element={userdta ? <Navigate to="/" /> : <RegisterPage />} />
+            <Route path="/login" element={userdta ? <Navigate to="/" /> : <LoginPage />} />
 
-          {/* Main Routes */}
-          <Route path="/" element={<HomePage />} />
-          <Route path="/collection" element={<CollectionPage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/men" element={<Men />} />
-          <Route path="/women" element={<Women />} />
-          <Route path="/kids" element={<Kids />} />
-          <Route path="/winter" element={<Winter />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/thank-you" element={<ThankYou />} />
-        </Routes>
+            {/* Main Routes */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/collection" element={<CollectionPage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/men" element={<Men />} />
+            <Route path="/women" element={<Women />} />
+            <Route path="/kids" element={<Kids />} />
+            <Route path="/winter" element={<Winter />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/thank-you" element={<ThankYou />} />
+          </Routes>
+        </React.Suspense>
       </div>
     </div>
   )
